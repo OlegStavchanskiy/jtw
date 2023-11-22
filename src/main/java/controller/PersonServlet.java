@@ -1,4 +1,5 @@
 package controller;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +11,8 @@ import java.io.PrintWriter;
 /**
 * Servlet implementation class RoleServlet_
 */
-@WebServlet("/HelloPersonServlet")
+@WebServlet("/person")
+
 public class PersonServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
 
@@ -30,7 +32,8 @@ HttpServletResponse response) throws ServletException, IOException {
  response.setContentType("text/html");
  PrintWriter writer = response.getWriter();
  try {
- writer.println("<h2>Привет RoleServlet</h2>");
+	 RequestDispatcher dispatcher = request.getRequestDispatcher("views/person.jsp");
+	 dispatcher.forward(request, response);
  } finally {
  writer.close();
  }
