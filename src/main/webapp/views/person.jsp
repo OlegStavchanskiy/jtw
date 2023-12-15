@@ -54,7 +54,6 @@ src="images/edit.png"></a></td>
 class="btn btn-outline-primary"> <img alt="Удалить"
 src="images/error.png"></a></td>
 </tr>
-21
 </c:forEach>
 </tbody>
 </table>
@@ -67,21 +66,20 @@ src="images/error.png"></a></td>
 <label for="lastname"
 class="col-sm-3 col-form-label">Фамилия</label>
 <div class="col-sm-7">
-<input type="text" class="form-control"
-id="staticLastname" name="lastname" />
+<input type="text" class="form-control" id="staticLastname"
+name="lastname" />
 </div>
 </div>
 <div class="mb-3 row">
 <label for="firstname"
 class="col-sm-3 col-form-label">Имя</label>
 <div class="col-sm-7">
-<input type="text" class="form-control"
-id="staticFirstname" name="firstname" />
+<input type="text" class="form-control" id="staticFirstname"
+name="firstname" />
 </div>
 </div>
 <div class="mb-3 row">
-<label for="rolename"
-class="col-sm-3 col-form-label">Должность</label>
+<label for="rolename" class="col-sm-3 col-formlabel">Должность</label>
 <div class="col-sm-7">
 <select name="role" class="form-control">
 <option>Выберите должность</option>
@@ -97,8 +95,8 @@ class="col-sm-3 col-form-label">Должность</label>
 <label for="phone"
 class="col-sm-3 col-form-label">Телефон</label>
 <div class="col-sm-7">
-<input type="text" class="form-control"
-id="staticphone" name="phone" />
+<input type="text" class="form-control" id="staticphone"
+name="phone" />
 </div>
 </div>
 <div class="mb-3 row">
@@ -111,10 +109,10 @@ name="email" />
 </div>
 <p>
 <br>
-<button type="submit"
-class="btn btn-primary">Добавить</button>
+<button type="submit" class="btn btn-primary">Добавить</button>
 </p>
 </form>
+
 </div>
 </div>
 </div>

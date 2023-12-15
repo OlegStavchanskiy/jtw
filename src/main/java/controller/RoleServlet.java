@@ -56,9 +56,20 @@ request.getRequestDispatcher("/views/role.jsp").forward(request, response);
 
 * response)
 */
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
+protected void doPost(HttpServletRequest request, HttpServletResponse
+response)
 throws ServletException, IOException {
-// TODO Auto-generated method stub
+RoleDbDAO dao = new RoleDbDAO();
+String name = request.getParameter("inputRole");
+Role newRole = new Role(name);
+try {
+Long index = dao.insert(newRole);
+System.out.println("Adding result: " + index );
+} catch (Exception e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
 doGet(request, response);
 }
+
 }

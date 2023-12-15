@@ -52,18 +52,21 @@ src="images/error.png"></a></td>
 <form method="POST" action="">
 <h3>Новая должность</h3>
 <div class="mb-3">
-<br> <label for="inputRole" class="col-sm-3 col-form-label">Должность</label>
+<br> <label for="inputRole"
+ class="col-sm-3 col-form-label">Должность</label>
 <div class="col-sm-6">
-<input type="text" name="inputRole" class="form-control"
-id="personRole" />
+<input type="text" name="inputRole"
+class="form-control" id="personRole" />
 </div>
 </div>
 <p>
 <br> <br> <br>
-<button type="submit" class="btn btn-primary">Добавить</button>
+<button type="submit"
+class="btn btn-primary">Добавить</button>
 <br>
 </p>
 </form>
+
 </div>
 </div>
 </div>

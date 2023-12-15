@@ -18,8 +18,7 @@ private static final String select_all_person = "SELECT id, firstname, lastname,
 
 private static final String select_person_ById = "SELECT id, roleid, firstname, lastname, phone, email "
 + "FROM persons WHERE id = ?";
-private static final String insert_person = "INSERT INTO persons( roleid, firstname, lastname, phone, email)"
-+ "VALUES(?,?,?,?,?)";
+private static final String insert_person = "INSERT INTO persons(roleid, firstname, lastname, phone, email) VALUES(?,?,?,?,?)";
 private static final String edit_person = "UPDATE persons SET roleid = ?, "
 + "firstname = ?, lastname = ?, phone = ?, email = ? WHERE id = ?";
 private static final String delete_person = "DELETE FROM persons WHERE id = ?";
@@ -37,11 +36,11 @@ public Long insert (Person person){
 try (Connection con = getConnection();
 PreparedStatement pst = con.prepareStatement(insert_person, new String[] { "id" })) {
 Long Id = -1L;
-pst.setString(1, person.getFirstName());
-pst.setString(2, person.getLastName());
-pst.setString(3, person.getRole());
+pst.setString(2, person.getFirstName());
+pst.setString(3, person.getLastName());
+pst.setLong(1, person.getIdRole());
 pst.setString(4, person.getPhone());
-pst.setString(4, person.getEmail());
+pst.setString(5, person.getEmail());
 pst.executeUpdate();
 ResultSet gk = pst.getGeneratedKeys();
 if (gk.next()) {
@@ -59,7 +58,7 @@ public void update(Person person){
 try (Connection con = getConnection(); PreparedStatement pst = con.prepareStatement(edit_person)) {
 pst.setString(1, person.getFirstName());
 pst.setString(2, person.getLastName());
-pst.setString(3, person.getRole());
+pst.setLong(3, person.getIdRole());
 pst.setString(4, person.getPhone());
 pst.setString(4, person.getEmail());
 pst.executeUpdate();
