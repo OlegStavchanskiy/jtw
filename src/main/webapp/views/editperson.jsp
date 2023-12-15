@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-<title>Сотрудники</title>
+<title>Редактирование данных</title>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,8 +35,6 @@ pageEncoding="UTF-8"%>
 <th scope="col">Должность</th>
 <th scope="col">Телефон</th>
 <th scope="col">Эл.почта</th>
-<th scope="col"></th>
-<th scope="col"></th>
 </thead>
 <tbody>
 <c:forEach var="person" items="${persons}">
@@ -47,16 +45,6 @@ pageEncoding="UTF-8"%>
 <td>${person.getRole()}</td>
 <td>${person.getPhone()}</td>
 <td>${person.getEmail()}</td>
-<td width="20">
-<a href="<c:url value="/editperson?id=${person.getId()}"/>"
-role="button" class="btn btn-outline-primary">
-<img alt="Редактировать" src="images/edit.png">
-</a></td>
-<td width="20">
-<a href="<c:url value="/deleteperson?id=${person.getId()}" />"
-role="button" class="btn btn-outline-primary">
-<img alt="Удалить" src="images/error.png">
-</a></td>
 </tr>
 </c:forEach>
 </tbody>
@@ -64,26 +52,35 @@ role="button" class="btn btn-outline-primary">
 </div>
 <div class="col-4 border px-4">
 <form method="POST" action="">
-<h3>Новый сотрудник</h3>
+<h3>Редактирование данных</h3>
 <br>
 <div class="mb-3 row">
-<label for="lastname"
-class="col-sm-3 col-form-label">Фамилия</label>
+<label for="idperson" class="col-sm-3 col-form-label">
+Код сотрудника</label>
+<div class="col-sm-7">
+<input type="text" class="form-control" readonly
+id="idperson" value="${personEdit.getId()}" />
+</div>
+</div>
+<div class="mb-3 row">
+<label for="lastname" class="col-sm-3 col-form-label">
+Фамилия</label>
 <div class="col-sm-7">
 <input type="text" class="form-control" id="staticLastname"
-name="lastname" />
+name="lastname" value="${personEdit.getLastName()}"/>
 </div>
 </div>
 <div class="mb-3 row">
-<label for="firstname"
-class="col-sm-3 col-form-label">Имя</label>
+<label for="firstname" class="col-sm-3 col-form-label">
+Имя</label>
 <div class="col-sm-7">
 <input type="text" class="form-control" id="staticFirstname"
-name="firstname" />
+name="firstname" value="${personEdit.getFirstName()}"/>
 </div>
 </div>
 <div class="mb-3 row">
-<label for="rolename" class="col-sm-3 col-formlabel">Должность</label>
+<label for="rolename" class="col-sm-3 col-form-label">
+Должность</label>
 <div class="col-sm-7">
 <select name="role" class="form-control">
 <option>Выберите должность</option>
@@ -96,11 +93,11 @@ name="firstname" />
 </div>
 </div>
 <div class="mb-3 row">
-<label for="phone"
-class="col-sm-3 col-form-label">Телефон</label>
+<label for="phone" class="col-sm-3 col-form-label">
+Телефон</label>
 <div class="col-sm-7">
 <input type="text" class="form-control" id="staticphone"
-name="phone" />
+name="phone" value="${personEdit.getPhone()}"/>
 </div>
 </div>
 <div class="mb-3 row">
@@ -108,15 +105,16 @@ name="phone" />
 </label>
 <div class="col-sm-7">
 <input type="text" class="form-control" id="staticemail"
-name="email" />
+name="email" value="${personEdit.getEmail()}"/>
 </div>
 </div>
 <p>
 <br>
-<button type="submit" class="btn btn-primary">Добавить</button>
+<button type="submit" class="btn btnprimary">Редактировать</button>
+<a href='<c:url value="/person" />' role="button"
+class="btn btn-secondary">Отменить</a>
 </p>
 </form>
-
 </div>
 </div>
 </div>

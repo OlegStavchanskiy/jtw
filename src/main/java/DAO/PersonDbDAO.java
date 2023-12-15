@@ -19,8 +19,7 @@ private static final String select_all_person = "SELECT id, firstname, lastname,
 private static final String select_person_ById = "SELECT id, roleid, firstname, lastname, phone, email "
 + "FROM persons WHERE id = ?";
 private static final String insert_person = "INSERT INTO persons(roleid, firstname, lastname, phone, email) VALUES(?,?,?,?,?)";
-private static final String edit_person = "UPDATE persons SET roleid = ?, "
-+ "firstname = ?, lastname = ?, phone = ?, email = ? WHERE id = ?";
+private static final String edit_person = "UPDATE persons SET roleid = ?, firstname = ?, lastname = ?, phone = ?, email = ? WHERE id = ?";
 private static final String delete_person = "DELETE FROM persons WHERE id = ?";
 // Создание соединения с базой данных
 private ConnectionBuilder builder = new DbConnectionBuilder();
@@ -56,11 +55,12 @@ return Id;
 @Override
 public void update(Person person){
 try (Connection con = getConnection(); PreparedStatement pst = con.prepareStatement(edit_person)) {
-pst.setString(1, person.getFirstName());
-pst.setString(2, person.getLastName());
-pst.setLong(3, person.getIdRole());
+pst.setString(2, person.getFirstName());
+pst.setString(3, person.getLastName());
+pst.setLong(1, person.getIdRole());
 pst.setString(4, person.getPhone());
-pst.setString(4, person.getEmail());
+pst.setString(5, person.getEmail());
+pst.setLong(6, person.getId());
 pst.executeUpdate();
 } catch (Exception e) {
 	e.printStackTrace();

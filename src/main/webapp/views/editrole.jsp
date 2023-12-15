@@ -23,61 +23,57 @@ pageEncoding="UTF-8"%>
 <jsp:include page="/views/header.jsp" />
 <div class="container-fluid">
 <div class="row justify-content-start ">
-<div class="col-8 border bg-light px-4">
+<div class="col-6 border bg-light px-4">
 <h3>Список должностей</h3>
 <table class="table">
 <thead>
+3
 <th scope="col">Код</th>
 <th scope="col">Должность</th>
-<th scope="col">Редактировать</th>
-<th scope="col">Удалить</th>
 </thead>
 <tbody>
 <c:forEach var="role" items="${roles}">
 <tr>
 <td>${role.getId()}</td>
 <td>${role.getNamerole()}</td>
-<td width="20"><a
-href='<c:url value="/editrole?id=${role.getId()}" />'
-role="button" class="btn btn-outline-primary">
-<img alt="Редактировать"
-src="images/edit.png"></a></td>
-<td width="20"><a
-href="<c:url value="/deleterole?id=${role.getId()}" />"
-role="button" class="btn btn-outline-primary">
-<img alt="Удалить" src="images/error.png"
-onclick="return confirm('Удалить должность с кодом:
-'+${role.getId()}+'?')">
-</a></td>
 </tr>
 </c:forEach>
 </tbody>
 </table>
 </div>
-<div class="col-4 border px-4">
+<div class="col-6 border px-4">
 <form method="POST" action="">
-<h3>Новая должность</h3>
-<div class="mb-3">
-<br> <label for="inputRole"
- class="col-sm-3 col-form-label">Должность</label>
+<h3>Редактировать должность</h3>
+<br> <br>
+<div class="mb-3 row">
+<label for="idrole" class="col-sm-3 col-form-label">
+Код должности</label>
 <div class="col-sm-6">
-<input type="text" name="inputRole"
-class="form-control" id="personRole" />
+<input type="text" class="form-control" readonly
+value="${roleEdit.getId()}" />
+</div>
+</div>
+<div class="mb-3 row">
+<br> <label for="inputRole"
+class="col-sm-3 col-form-label">Должность</label>
+<div class="col-sm-6">
+<input type="text" name="inputRole" class="form-control"
+value="${roleEdit.getNamerole()}" id="personRole" />
 </div>
 </div>
 <p>
 <br> <br> <br>
 <button type="submit"
-class="btn btn-primary">Добавить</button>
+class="btn btn-primary">Редактировать</button>
+<a href='<c:url value="/role" />' role="button"
+class="btn btn-secondary">Отменить</a>
 <br>
 </p>
 </form>
-
 </div>
 </div>
 </div>
 <jsp:include page="/views/footer.jsp" />
 </div>
-
 </body>
 </html>
